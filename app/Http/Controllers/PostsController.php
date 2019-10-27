@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -23,6 +24,11 @@ class PostsController extends Controller
      */
     public function index()
     {
+        $post = Post::create([
+                'title' => 'title',
+                'post'  => 'Post'
+            ]);
         return view('posts');
     }
+
 }
