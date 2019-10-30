@@ -20,5 +20,5 @@ Route::get('/', function () {
 
 Route::post('login',     'Auth\MyAuthController@authenticate');
 Route::post('register',  'Auth\MyAuthController@register');
-Route::get( 'posts',     'PostsController@index')->middleware('auth')->name('posts');;
+Route::get( 'posts',     'PostsController@index')->name('posts');;
 Route::get( 'logout',    'Auth\MyAuthController@logout')->middleware('auth');;

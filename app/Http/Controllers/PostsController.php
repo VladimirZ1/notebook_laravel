@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -24,11 +26,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $post = Post::create([
-                'title' => 'title',
-                'post'  => 'Post'
-            ]);
-        return view('posts');
+        $posts = Post::where('user_id',Auth::user()->id)->get();
+        return view('posts',['posts'=>$posts]);
     }
 
 }

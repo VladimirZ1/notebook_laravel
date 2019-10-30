@@ -10,4 +10,16 @@
             </div>
         </nav>
       </header>
+      <div class="container mt-5">
+       <div class="row">
+        <div class="col-md-4" style="border-right: 1px solid;">
+			@foreach ($posts as $post) 
+ 				 <p>Title :{{ $post->title }}</p>
+			@endforeach
+        </div>
+        <div class="col-md-6">
+			xcvsd
+        </div>
+       </div>
+      </div>
 @endsection
