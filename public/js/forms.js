@@ -30,7 +30,7 @@
 	  return el;
 	};
 
-    
+  
   let onClickBtnReg = function (event){
     let newRegForm = createElem("form", {id    : "regForm",class : "form-group row justify-content-center"},
                         createElem("input", {type : "hidden", name : "_token", id : "token"}),
