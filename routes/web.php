@@ -20,5 +20,7 @@ Route::get('/', function () {
 
 Route::post('login',     'Auth\MyAuthController@authenticate');
 Route::post('register',  'Auth\MyAuthController@register');
-Route::get( 'posts',     'PostsController@index')->name('posts');;
-Route::get( 'logout',    'Auth\MyAuthController@logout')->middleware('auth');;
+Route::get( 'posts',     'PostsController@index')->name('posts');
+Route::get( 'logout',    'Auth\MyAuthController@logout')->middleware('auth');
+Route::get( 'post/{id?}','PostsController@post')->middleware('auth')->where('id', '[0-9]+');
+Route::post( 'post/{id?}','PostsController@post')->middleware('auth')->where('id', '[0-9]+');

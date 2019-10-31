@@ -1,0 +1,1 @@
+<button id="btnDeletePost" type="button" class="btn btn-danger mt-2" disabled>Удалить POST</button>

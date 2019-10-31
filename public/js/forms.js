@@ -1,5 +1,4 @@
 ;let forms = (function() {
-
   let bodyOnLoad = function () {
     document.querySelector('form').addEventListener('input', removeError);
     
@@ -11,6 +10,7 @@
     };
   
   };
+
 
 	let createElem = function (name,attributes,...args) {
 	  let el = document.createElement(name);

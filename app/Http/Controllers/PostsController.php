@@ -30,4 +30,32 @@ class PostsController extends Controller
         return view('posts',['posts'=>$posts]);
     }
 
+    public function post(Request $request,$id = null)
+    {   
+        $method = $request->method();
+
+        if ($request->isMethod('get')) {
+            $post = null;
+            $posts = Post::where('user_id',Auth::user()->id)->get();
+            if ($id) {
+                $post = Post::where('id',$id)->first();
+                if (!$post) return abort(404);
+            } 
+            return view('post',['posts'=>$posts,'post'=>$post]);
+        }
+
+        if ($request->isMethod('post')) {
+            $credentials = $request->only('title','post','date');
+
+            $post = Post::create([
+                'title'   => $credentials['title'],
+                'post'    => $credentials['post'],
+                'date'    => $credentials['date'],
+                'user_id' => Auth::user()->id
+            ]);
+
+            return redirect('posts');;
+        }
+        
+    }
 }
