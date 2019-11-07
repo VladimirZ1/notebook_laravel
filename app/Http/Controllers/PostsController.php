@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StorePost;
 
 class PostsController extends Controller
 {
@@ -34,7 +35,7 @@ class PostsController extends Controller
         return view('post', ['posts' => $posts, 'post' => $post]);
     }
 
-    public function postSave(Request $request)
+    public function postSave(StorePost $request)
     { 
         $credentials = $request->only('id','title','post','date');
 

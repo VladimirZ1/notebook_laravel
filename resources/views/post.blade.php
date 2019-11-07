@@ -8,13 +8,28 @@
 	 <input id="idPost" type="hidden" name="id" value="{{ isset($post) ? $post->id : ''  }}">
      <div class="row">
        <div class="col-md-6">
-         <input class="form-control" id="title" name="title" placeholder="Заголовок" required value="{{ isset($post) ? $post->title : ''  }}">
+        @if ($errors->any())
+         <input class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Заголовок" value="{{ old('title') }}">
+        @else
+          <input class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Заголовок" value="{{ isset($post) ? $post->title : '' }}">
+        @endif
+         @error('title')
+            <div id="titleError" class="invalid-feedback" style="display : flex;">{{ $message }}</div>
+         @enderror
        </div>
        <div class="col-md-6">
-         <input type="date" class="form-control" id="date" name="date" placeholder="Дата" required value="{{ isset($post) ? $post->date : ''  }}" >
+        @if ($errors->any())
+          <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" placeholder="Дата" value="{{ old('date') }}" >
+        @else
+         <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" placeholder="Дата" value="{{ isset($post) ? $post->date : '' }}" >
+        @endif
+         @error('date')
+            <div id="dateError" class="invalid-feedback" style="display : flex;">{{ $message }}</div>
+         @enderror
        </div>
      </div>   
      <textarea class="form-control mt-1" id="post" name="post" placeholder="Текст" rows="10">{{ isset($post) ? $post->post : '' }}</textarea>
+     
      @isset($post)
       @include('deleteEnable')
      @endisset
