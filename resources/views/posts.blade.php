@@ -7,7 +7,7 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
       <div class="container justify-content-center">
-        <h1>Добро пожаловать,<a href='/profile' class="btn-link">{{ Auth::user()->name }}</a>! <a href='/logout' class="btn-link">Выйти</a></h1>
+        <h1>Добро пожаловать,<a href='/profile' class="btn-link"><img src="/storage/avatars/{{ Auth::user()->id }}" style="width:40px; height:40px;border-radius:50%; margin-right:5px;">{{ Auth::user()->name }}</a>! <a href='/logout' class="btn-link">Выйти</a></h1>
       </div>
     </nav>
   </header>

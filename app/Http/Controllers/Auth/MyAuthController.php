@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\SaveProfile;
 
 
 class MyAuthController extends Controller
@@ -86,6 +87,19 @@ class MyAuthController extends Controller
 
 
         return view('profile');
+
+    }
+
+    public function profileSave(Request $request) {
+
+       
+        if ($request->hasFile('avatar')) {
+            $path = $request->file('avatar')->storeAs(
+                'avatars', $request->user()->id
+            );
+        }
+
+        return redirect()->route('posts');
 
     }
 
